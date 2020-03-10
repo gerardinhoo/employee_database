@@ -1,0 +1,36 @@
+<%- include('partials/header') -%>
+
+
+<div class="container mt-5 w-50">
+
+    <h2 class="mb-4">Search Employee</h2>
+
+    <form action="/employee" action="POST">
+        <input type="text" name="name" class="form-control" placeholder="Employee Name">
+        <button type="submit" class="btn btn-danger btn-block mt-3">Search Employee In Database</button>
+    </form>
+
+
+    <% if(employee)  { %>
+    <h4 class="text-danger my-4">Search Results: </h4>
+    <table class="table table-bordered width=100 cellspacing=0">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Designation</th>
+                <th scope="col">Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= employee.name %></td>
+                <td><%= employee.designation %></td>
+                <td>$<%= employee.salary %></td>
+            </tr>
+        </tbody>
+    </table>
+    <% } %>
+</div>
+
+
+<%- include('partials/footer') -%>
