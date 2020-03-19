@@ -8,7 +8,6 @@ const session = require("express-session");
 const flash = require('connect-flash');
 
 
-
 const bodyParser = require("body-parser");
 
 const employeesRoutes = require("./routes/employees");
@@ -33,7 +32,6 @@ app.use(express.static("public"));
 // Middleware for method override
 app.use(methodOverride('_method'));
 
-
 // Middleware for express session
 app.use(session({
     secret: "Dinho",
@@ -45,15 +43,13 @@ app.use(session({
 app.use(flash());
 
 // Setting messages variables globally
-app.use = ((req, res, next) => {
+app.use((req, res, next) => {
     res.locals.success_msg = req.flash(("success_msg"));
     res.locals.error_msg = req.flash(("error_msg"));
     next();
 })
 
-
 app.use(employeesRoutes)
-
 
 
 app.listen("3000", () => {
